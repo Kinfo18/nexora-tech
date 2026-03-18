@@ -47,6 +47,48 @@ export const translations = {
         { value: "Latam", label: "Cobertura regional" },
       ],
     },
+    services: {
+      badge: "Nuestros Servicios",
+      title: "Lo que construimos para ti",
+      subtitle:
+        "Soluciones completas desde la estrategia hasta el lanzamiento, adaptadas a las necesidades reales de tu negocio.",
+      cta: "Ver todos los servicios",
+      ctaBanner: "¿No encuentras lo que buscas?",
+      ctaBannerSub: "Hablemos de tu proyecto y encontramos la solución ideal juntos.",
+      ctaBannerBtn: "Contáctanos",
+      items: [
+        {
+          title: "Software a Medida",
+          description:
+            "Desarrollamos aplicaciones personalizadas adaptadas a los procesos únicos de tu empresa, desde el diseño hasta el despliegue en producción.",
+          color: "#5B4DFF",
+        },
+        {
+          title: "Desarrollo Web",
+          description:
+            "Sitios y plataformas web modernas, rápidas y optimizadas para conversión, construidas con las tecnologías más sólidas del mercado.",
+          color: "#2F80ED",
+        },
+        {
+          title: "Apps Móviles",
+          description:
+            "Aplicaciones iOS y Android nativas o multiplataforma con React Native, centradas en la experiencia del usuario y el rendimiento.",
+          color: "#2DD4BF",
+        },
+        {
+          title: "Consultoría Tech",
+          description:
+            "Asesoría estratégica para definir arquitectura, stack tecnológico y hoja de ruta, tomando decisiones informadas desde el inicio.",
+          color: "#FF9F43",
+        },
+        {
+          title: "Automatización de Procesos",
+          description:
+            "Integración de sistemas, APIs y flujos automáticos que eliminan trabajo manual y reducen errores operativos en tu empresa.",
+          color: "#2DD4BF",
+        },
+      ],
+    },
     contact: {
       title: "¿Tienes un proyecto en mente?",
       subtitle:
@@ -103,6 +145,48 @@ export const translations = {
         { value: "5+", label: "Years of experience" },
         { value: "100%", label: "Satisfied clients" },
         { value: "Latam", label: "Regional coverage" },
+      ],
+    },
+    services: {
+      badge: "Our Services",
+      title: "What we build for you",
+      subtitle:
+        "End-to-end solutions from strategy to launch, tailored to the real needs of your business.",
+      cta: "View all services",
+      ctaBanner: "Can't find what you're looking for?",
+      ctaBannerSub: "Let's talk about your project and find the ideal solution together.",
+      ctaBannerBtn: "Contact us",
+      items: [
+        {
+          title: "Custom Software",
+          description:
+            "We develop personalized applications adapted to your company's unique processes, from design to production deployment.",
+          color: "#5B4DFF",
+        },
+        {
+          title: "Web Development",
+          description:
+            "Modern, fast and conversion-optimized websites and web platforms, built with the most solid technologies on the market.",
+          color: "#2F80ED",
+        },
+        {
+          title: "Mobile Apps",
+          description:
+            "Native or cross-platform iOS and Android applications with React Native, focused on user experience and performance.",
+          color: "#2DD4BF",
+        },
+        {
+          title: "Tech Consulting",
+          description:
+            "Strategic advice to define architecture, technology stack and roadmap, making informed decisions from the start.",
+          color: "#FF9F43",
+        },
+        {
+          title: "Process Automation",
+          description:
+            "System integrations, APIs and automated workflows that eliminate manual work and reduce operational errors in your company.",
+          color: "#2DD4BF",
+        },
       ],
     },
     contact: {
