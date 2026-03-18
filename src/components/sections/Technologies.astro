@@ -1,0 +1,112 @@
+---
+// src/components/sections/Technologies.astro
+import { translations } from "../../i18n/translations";
+
+const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+const t = translations[lang];
+const tech = t.technologies;
+---
+
+<!-- Devicons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+<section id="tecnologias" class="relative py-24 lg:py-32 technologies-bg overflow-hidden">
+
+  <!-- Degradados decorativos -->
+  <div class="absolute bottom-0 left-0 w-[600px] h-[400px]
+              bg-gradient-to-tr from-primary/8 to-transparent
+              rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-0 right-0 w-[400px] h-[400px]
+              bg-gradient-to-bl from-secondary/6 to-transparent
+              rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="relative container mx-auto px-6">
+
+    <!-- ENCABEZADO -->
+    <div class="flex flex-col items-center text-center mb-16 space-y-5">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full
+                   bg-primary/10 dark:bg-primary/15
+                   border border-primary/20 dark:border-primary/30
+                   text-primary text-sm font-semibold">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+        </svg>
+        {tech.badge}
+      </span>
+
+      <h2 class="text-4xl lg:text-5xl font-extrabold text-dark dark:text-surface
+                 leading-tight tracking-tight max-w-2xl">
+        {tech.title}
+      </h2>
+
+      <p class="text-lg text-dark/60 dark:text-surface/60 max-w-xl leading-relaxed">
+        {tech.subtitle}
+      </p>
+    </div>
+
+    <!-- CATEGORIAS -->
+    <div class="space-y-10">
+      {tech.categories.map((category) => (
+        <div>
+          <!-- Título de categoría -->
+          <div class="flex items-center gap-3 mb-5">
+            <div
+              class="w-3 h-3 rounded-full shrink-0"
+              style={`background-color: ${category.color}`}
+            ></div>
+            <h3 class="text-sm font-bold text-dark/50 dark:text-surface/50 uppercase tracking-[0.15em]">
+              {category.name}
+            </h3>
+            <div class="flex-1 h-px bg-dark/8 dark:bg-surface/8"></div>
+          </div>
+
+          <!-- Grid de chips glassmorphism -->
+          <div class="flex flex-wrap gap-3">
+            {category.techs.map((t) => (
+              <div class="tech-chip group relative flex items-center gap-2.5
+                          px-4 py-2.5 rounded-xl
+                          border transition-all duration-300
+                          hover:-translate-y-0.5 hover:shadow-lg cursor-default"
+                   style={`
+                     --chip-color: ${t.color};
+                     border-color: ${t.color}20;
+                     background: ${t.color}08;
+                   `}
+              >
+                <!-- Efecto glassmorphism interior -->
+                <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100
+                            transition-opacity duration-300 pointer-events-none"
+                     style={`background: ${t.color}12; box-shadow: 0 0 0 1px ${t.color}35, 0 8px 24px -4px ${t.color}20`}>
+                </div>
+
+                <!-- Ícono devicon -->
+                <i class={`${t.icon} colored text-xl relative z-10 transition-transform duration-300 group-hover:scale-110`}
+                   style={t.icon.includes('nextjs') || t.icon.includes('express') || t.icon.includes('github') || t.icon.includes('vercel')
+                     ? `color: ${t.color}` : ''}>
+                </i>
+
+                <!-- Nombre -->
+                <span class="text-sm font-semibold text-dark/70 dark:text-surface/70
+                             group-hover:text-dark dark:group-hover:text-surface
+                             relative z-10 transition-colors duration-300">
+                  {t.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .technologies-bg {
+    background-color: #F5F7FA;
+  }
+  :global(html.dark) .technologies-bg {
+    background-color: rgba(13, 15, 26, 0.5);
+  }
+</style>
