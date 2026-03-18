@@ -89,6 +89,68 @@ export const translations = {
         },
       ],
     },
+    process: {
+      badge: "Cómo trabajamos",
+      title: "Un proceso claro, resultados predecibles",
+      subtitle:
+        "Cada proyecto sigue una metodología probada que garantiza transparencia, calidad y entregas a tiempo.",
+      steps: [
+        {
+          number: "01",
+          title: "Descubrimiento",
+          description:
+            "Entendemos tu negocio, objetivos y necesidades en una sesión estratégica inicial sin costo.",
+        },
+        {
+          number: "02",
+          title: "Diagnóstico",
+          description:
+            "Analizamos tu infraestructura actual, procesos internos y oportunidades de mejora tecnológica.",
+        },
+        {
+          number: "03",
+          title: "Propuesta",
+          description:
+            "Diseñamos la arquitectura, estimamos tiempos y costos, y presentamos una propuesta detallada y transparente.",
+        },
+        {
+          number: "04",
+          title: "Planificación",
+          description:
+            "Definimos el roadmap del proyecto, asignamos el equipo ideal y establecemos los hitos de entrega por sprint.",
+        },
+        {
+          number: "05",
+          title: "Diseño & Prototipo",
+          description:
+            "Creamos wireframes y prototipos interactivos para validar la experiencia de usuario antes de escribir una línea de código.",
+        },
+        {
+          number: "06",
+          title: "Desarrollo",
+          description:
+            "Construimos en sprints semanales con entregas continuas, demos en vivo y ciclos de retroalimentación constantes.",
+        },
+        {
+          number: "07",
+          title: "Control de Calidad",
+          description:
+            "Ejecutamos pruebas automatizadas, pruebas de rendimiento y revisión de seguridad antes de cada entrega.",
+        },
+        {
+          number: "08",
+          title: "Lanzamiento",
+          description:
+            "Desplegamos en producción con monitoreo en tiempo real, asegurando una transición sin interrupciones.",
+        },
+        {
+          number: "09",
+          title: "Soporte & Evolución",
+          description:
+            "Acompañamos el crecimiento del producto con soporte post-lanzamiento, mejoras continuas y escalamiento.",
+        },
+      ],
+    },
     contact: {
       title: "¿Tienes un proyecto en mente?",
       subtitle:
@@ -189,6 +251,68 @@ export const translations = {
         },
       ],
     },
+    process: {
+      badge: "How we work",
+      title: "A clear process, predictable results",
+      subtitle:
+        "Every project follows a proven methodology that guarantees transparency, quality and on-time delivery.",
+      steps: [
+        {
+          number: "01",
+          title: "Discovery",
+          description:
+            "We understand your business, goals and needs in a free initial strategic session.",
+        },
+        {
+          number: "02",
+          title: "Diagnosis",
+          description:
+            "We analyze your current infrastructure, internal processes and opportunities for technological improvement.",
+        },
+        {
+          number: "03",
+          title: "Proposal",
+          description:
+            "We design the architecture, estimate timelines and costs, and present a detailed, transparent proposal.",
+        },
+        {
+          number: "04",
+          title: "Planning",
+          description:
+            "We define the project roadmap, assign the ideal team and establish sprint delivery milestones.",
+        },
+        {
+          number: "05",
+          title: "Design & Prototype",
+          description:
+            "We create wireframes and interactive prototypes to validate the user experience before writing a single line of code.",
+        },
+        {
+          number: "06",
+          title: "Development",
+          description:
+            "We build in weekly sprints with continuous deliveries, live demos and constant feedback cycles.",
+        },
+        {
+          number: "07",
+          title: "Quality Assurance",
+          description:
+            "We run automated tests, performance testing and security review before each delivery.",
+        },
+        {
+          number: "08",
+          title: "Launch",
+          description:
+            "We deploy to production with real-time monitoring, ensuring a seamless transition.",
+        },
+        {
+          number: "09",
+          title: "Support & Evolution",
+          description:
+            "We accompany product growth with post-launch support, continuous improvements and scaling.",
+        },
+      ],
+    },
     contact: {
       title: "Have a project in mind?",
       subtitle: "We are ready to help you turn your idea into a technology solution.",
@@ -202,6 +326,5 @@ export const translations = {
   },
 } as const;
 
-// Tipos utilitarios para autocompletado en TypeScript
 export type Lang = keyof typeof translations;
 export type Translations = typeof translations;
