@@ -1,16 +1,27 @@
 ---
-// src/pages/en/index.astro — Main page in English
+// src/pages/en/index.astro
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/sections/Hero.astro";
+import About from "../../components/sections/About.astro";
+import Services from "../../components/sections/Services.astro";
+import Process from "../../components/sections/Process.astro";
+import Projects from "../../components/sections/Projects.astro";
+import Technologies from "../../components/sections/Technologies.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
 ---
 
 <BaseLayout
-  title="Nexora Technologies — We build software that drives your business"
+  title="Nexora Technologies — We build software that drives your company's growth"
   description="Custom technology solutions for companies looking to scale, automate processes and enhance their digital presence."
   lang="en"
 >
   <main>
-    <p class="font-heading text-primary">
-      Nexora Technologies is under construction! 🚀
-    </p>
+    <Hero />
+    <About />
+    <Services />
+    <Process />
+    <Projects />
+    <Technologies />
+    <Testimonials />
   </main>
 </BaseLayout>
