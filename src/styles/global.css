@@ -1,15 +1,35 @@
-/* scr/styñes/global.css */
+/* src/styles/global.css */
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #5B4DFF;
-    --color-secondary : #2F80ED;
-    --color-accent : #2DD4BF;
-    --color-highlight : #FF9F43;
-    --color-dark : #1F2937;
-    --color-surface : #F5F7FA;
-    --color-deep : #0D0F1A;
+  /* === COLORES NEXORA TECHNOLOGIES === */
+  --color-primary:   #5B4DFF;  /* Violeta tecnológico - color principal */
+  --color-secondary: #2F80ED;  /* Azul moderno - acciones secundarias */
+  --color-accent:    #2DD4BF;  /* Turquesa - highlights e íconos */
+  --color-highlight: #FF9F43;  /* Naranja - micro-acentos (uso mínimo) */
+  --color-dark:      #1F2937;  /* Gris oscuro - texto cuerpo */
+  --color-surface:   #F5F7FA;  /* Gris claro - fondos alternos */
+  --color-deep:      #0D0F1A;  /* Negro profundo - fondo Hero dark mode */
 
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Inter', sans-serif;
+  /* === TIPOGRAFÍA CORPORATIVA === */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}
+
+/* === ESTILOS BASE === */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: white;
+  color: #1F2937;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode base */
+html.dark body {
+  background-color: #0D0F1A;
+  color: #F5F7FA;
 }

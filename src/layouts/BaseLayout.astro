@@ -1,24 +1,59 @@
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
+---
+// src/layouts/BaseLayout.astro
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+}
 
-  <script is:inline>
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  </script>
-</head>
+const {
+  title = "Nexora Technologies — Transformamos ideas en soluciones digitales",
+  description = "Desarrollamos software a medida, aplicaciones web y móviles para empresas en crecimiento en Latinoamérica.",
+  lang = "es",
+} = Astro.props;
+---
+
+<html lang={lang} class="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Google Fonts: Poppins + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Importar estilos globales -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- 
+      Script anti-FOUC (Flash of Unstyled Content)
+      DEBE ejecutarse ANTES de que el navegador pinte la página.
+      is:inline = no espera hidratación, corre inmediatamente.
+    -->
+    <script is:inline>
+      // Light mode es el defecto. Solo activamos dark si el usuario lo eligió.
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- 
+      <slot /> es el "hueco" donde Astro inyecta
+      el contenido de cada página que use este layout.
+    -->
+    <slot />
+  </body>
+</html>
