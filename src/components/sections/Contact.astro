@@ -1,0 +1,453 @@
+---
+// src/components/sections/Contact.astro
+import { translations } from "../../i18n/translations";
+
+const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+const t = translations[lang];
+const c = t.contact;
+---
+
+<section id="contacto" class="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
+
+  <!-- ============================================================
+       LADO IZQUIERDO — Fondo claro + datos directos + SVG
+  ============================================================ -->
+  <div class="relative w-full lg:w-1/2 flex flex-col justify-center
+              px-8 py-20 lg:px-16 lg:py-24
+              bg-white dark:bg-[#0D0F1A]">
+
+    <!-- Degradado sutil en la esquina -->
+    <div class="absolute top-0 left-0 w-72 h-72
+                bg-gradient-to-br from-primary/6 to-transparent
+                rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Badge -->
+    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full w-fit mb-6
+                 bg-primary/10 border border-primary/20 text-primary text-sm font-semibold">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      {c.badge}
+    </span>
+
+    <!-- Título -->
+    <h2 class="text-4xl lg:text-5xl font-extrabold text-dark dark:text-surface
+               leading-tight tracking-tight mb-4">
+      {c.title}
+    </h2>
+    <p class="text-lg text-dark/60 dark:text-surface/60 leading-relaxed mb-10 max-w-md">
+      {c.subtitle}
+    </p>
+
+    <!-- Datos de contacto -->
+    <div class="space-y-5 mb-12">
+
+      <!-- Email -->
+      <a href="mailto:droidtunk.co@gmail.com"
+         class="flex items-center gap-4 group w-fit">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0
+                    bg-primary/10 text-primary
+                    group-hover:bg-primary group-hover:text-white
+                    transition-all duration-200">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs text-dark/40 dark:text-surface/40 font-medium uppercase tracking-wider">{c.labelEmail}</p>
+          <p class="text-dark dark:text-surface font-semibold group-hover:text-primary transition-colors duration-200">
+            droidtunk.co@gmail.com
+          </p>
+        </div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/573236266711" target="_blank" rel="noopener"
+         class="flex items-center gap-4 group w-fit">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0
+                    bg-green-500/10 text-green-500
+                    group-hover:bg-green-500 group-hover:text-white
+                    transition-all duration-200">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs text-dark/40 dark:text-surface/40 font-medium uppercase tracking-wider">{c.labelWhatsapp}</p>
+          <p class="text-dark dark:text-surface font-semibold group-hover:text-green-500 transition-colors duration-200">
+            +57 323 626 6711
+          </p>
+        </div>
+      </a>
+
+      <!-- Ubicación -->
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0
+                    bg-accent/10 text-accent">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs text-dark/40 dark:text-surface/40 font-medium uppercase tracking-wider">{c.labelLocation}</p>
+          <p class="text-dark dark:text-surface font-semibold">Bogotá, Colombia</p>
+        </div>
+      </div>
+
+      <!-- Horario -->
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0
+                    bg-orange-400/10 text-orange-400">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs text-dark/40 dark:text-surface/40 font-medium uppercase tracking-wider">{c.labelHours}</p>
+          <p class="text-dark dark:text-surface font-semibold">Lun – Vie &nbsp;8:00 am – 6:00 pm (COT)</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SVG ANIMADO — Globo de conexiones tech -->
+    <div class="relative w-full max-w-xs mx-auto lg:mx-0" aria-hidden="true">
+      <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg"
+           class="w-full opacity-80">
+
+        <!-- Líneas de conexión animadas -->
+        <line x1="160" y1="110" x2="60"  y2="50"  stroke="#5B4DFF" stroke-width="1" stroke-dasharray="4 3" class="anim-dash"/>
+        <line x1="160" y1="110" x2="260" y2="50"  stroke="#2F80ED" stroke-width="1" stroke-dasharray="4 3" class="anim-dash" style="animation-delay:.4s"/>
+        <line x1="160" y1="110" x2="290" y2="140" stroke="#2DD4BF" stroke-width="1" stroke-dasharray="4 3" class="anim-dash" style="animation-delay:.8s"/>
+        <line x1="160" y1="110" x2="160" y2="195" stroke="#5B4DFF" stroke-width="1" stroke-dasharray="4 3" class="anim-dash" style="animation-delay:1.2s"/>
+        <line x1="160" y1="110" x2="30"  y2="140" stroke="#FF9F43" stroke-width="1" stroke-dasharray="4 3" class="anim-dash" style="animation-delay:1.6s"/>
+        <line x1="160" y1="110" x2="90"  y2="185" stroke="#22C55E" stroke-width="1" stroke-dasharray="4 3" class="anim-dash" style="animation-delay:2s"/>
+        <line x1="60"  y1="50"  x2="260" y2="50"  stroke="#5B4DFF" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.4" class="anim-dash" style="animation-delay:.2s"/>
+        <line x1="30"  y1="140" x2="290" y2="140" stroke="#2DD4BF" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.4" class="anim-dash" style="animation-delay:.6s"/>
+
+        <!-- Nodo central — Nexora -->
+        <circle cx="160" cy="110" r="22" fill="#5B4DFF" opacity="0.15"/>
+        <circle cx="160" cy="110" r="14" fill="#5B4DFF" opacity="0.25"/>
+        <circle cx="160" cy="110" r="7"  fill="#5B4DFF"/>
+        <circle cx="160" cy="110" r="22" fill="none" stroke="#5B4DFF" stroke-width="1" opacity="0.4" class="anim-pulse-ring"/>
+
+        <!-- Nodos satelite -->
+        <!-- Frontend -->
+        <circle cx="60" cy="50" r="10" fill="#5B4DFF" opacity="0.2"/>
+        <circle cx="60" cy="50" r="5"  fill="#5B4DFF" class="anim-node"/>
+        <text x="60" y="34" text-anchor="middle" fill="#5B4DFF" font-size="9" font-family="system-ui" font-weight="600">React</text>
+
+        <!-- Backend -->
+        <circle cx="260" cy="50" r="10" fill="#2F80ED" opacity="0.2"/>
+        <circle cx="260" cy="50" r="5"  fill="#2F80ED" class="anim-node" style="animation-delay:.3s"/>
+        <text x="260" y="34" text-anchor="middle" fill="#2F80ED" font-size="9" font-family="system-ui" font-weight="600">Node.js</text>
+
+        <!-- Cloud -->
+        <circle cx="290" cy="140" r="10" fill="#2DD4BF" opacity="0.2"/>
+        <circle cx="290" cy="140" r="5"  fill="#2DD4BF" class="anim-node" style="animation-delay:.6s"/>
+        <text x="295" y="160" text-anchor="middle" fill="#2DD4BF" font-size="9" font-family="system-ui" font-weight="600">AWS</text>
+
+        <!-- Mobile -->
+        <circle cx="160" cy="195" r="10" fill="#5B4DFF" opacity="0.2"/>
+        <circle cx="160" cy="195" r="5"  fill="#5B4DFF" class="anim-node" style="animation-delay:.9s"/>
+        <text x="160" y="213" text-anchor="middle" fill="#5B4DFF" font-size="9" font-family="system-ui" font-weight="600">Mobile</text>
+
+        <!-- DB -->
+        <circle cx="30" cy="140" r="10" fill="#FF9F43" opacity="0.2"/>
+        <circle cx="30" cy="140" r="5"  fill="#FF9F43" class="anim-node" style="animation-delay:1.2s"/>
+        <text x="22" y="160" text-anchor="middle" fill="#FF9F43" font-size="9" font-family="system-ui" font-weight="600">DB</text>
+
+        <!-- DevOps -->
+        <circle cx="90" cy="185" r="10" fill="#22C55E" opacity="0.2"/>
+        <circle cx="90" cy="185" r="5"  fill="#22C55E" class="anim-node" style="animation-delay:1.5s"/>
+        <text x="90" y="203" text-anchor="middle" fill="#22C55E" font-size="9" font-family="system-ui" font-weight="600">DevOps</text>
+
+        <!-- Punto Bogotá en el centro con pin -->
+        <text x="160" y="107" text-anchor="middle" fill="white" font-size="7" font-family="system-ui" font-weight="700">BOG</text>
+
+      </svg>
+    </div>
+
+  </div>
+
+
+  <!-- ============================================================
+       LADO DERECHO — Gradiente oscuro + Formulario
+  ============================================================ -->
+  <div class="relative w-full lg:w-1/2 flex flex-col justify-center
+              px-8 py-20 lg:px-16 lg:py-24 overflow-hidden">
+
+    <!-- Fondo gradiente oscuro -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0D0F1A] via-[#111827] to-[#0f172a]"></div>
+    <!-- Glow violeta superior -->
+    <div class="absolute top-0 right-0 w-80 h-80
+                bg-gradient-to-bl from-primary/25 to-transparent
+                rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Glow turquesa inferior -->
+    <div class="absolute bottom-0 left-0 w-72 h-72
+                bg-gradient-to-tr from-accent/20 to-transparent
+                rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Formulario -->
+    <div class="relative z-10 w-full max-w-lg">
+
+      <h3 class="text-2xl font-bold text-surface mb-2">{c.formTitle}</h3>
+      <p class="text-surface/50 text-sm mb-8">{c.formSubtitle}</p>
+
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/xpqykkqv"
+        method="POST"
+        class="space-y-5"
+        novalidate
+      >
+        <!-- Fila 1: Nombre + Empresa -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="form-field">
+            <label class="form-label">{c.name} <span class="text-primary">*</span></label>
+            <input
+              type="text" name="name" autocomplete="name"
+              placeholder="Juan Pérez"
+              class="form-input" required
+            />
+            <p class="form-error hidden">{c.errorRequired}</p>
+          </div>
+          <div class="form-field">
+            <label class="form-label">{c.company}</label>
+            <input
+              type="text" name="company" autocomplete="organization"
+              placeholder="Mi Empresa S.A.S"
+              class="form-input"
+            />
+          </div>
+        </div>
+
+        <!-- Fila 2: Email + Teléfono -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="form-field">
+            <label class="form-label">{c.email} <span class="text-primary">*</span></label>
+            <input
+              type="email" name="email" autocomplete="email"
+              placeholder="juan@empresa.com"
+              class="form-input" required
+            />
+            <p class="form-error hidden">{c.errorEmail}</p>
+          </div>
+          <div class="form-field">
+            <label class="form-label">{c.phone}</label>
+            <input
+              type="tel" name="phone" autocomplete="tel"
+              placeholder="+57 300 000 0000"
+              class="form-input"
+            />
+          </div>
+        </div>
+
+        <!-- Select de servicio -->
+        <div class="form-field">
+          <label class="form-label">{c.service}</label>
+          <select name="service" class="form-input">
+            <option value="">{c.servicePlaceholder}</option>
+            {c.serviceOptions.map((opt) => (
+              <option value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-field">
+          <label class="form-label">{c.message} <span class="text-primary">*</span></label>
+          <textarea
+            name="message"
+            rows="4"
+            placeholder={c.messagePlaceholder}
+            class="form-input resize-none"
+            required
+          ></textarea>
+          <p class="form-error hidden">{c.errorRequired}</p>
+        </div>
+
+        <!-- Botón submit -->
+        <button
+          type="submit"
+          id="submit-btn"
+          class="w-full flex items-center justify-center gap-3
+                 px-8 py-4 rounded-xl
+                 bg-primary hover:bg-primary/90
+                 text-white font-bold text-base
+                 shadow-lg shadow-primary/30
+                 hover:shadow-xl hover:shadow-primary/40
+                 hover:-translate-y-0.5
+                 transition-all duration-200
+                 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+        >
+          <span id="btn-text">{c.send}</span>
+          <!-- Spinner (oculto por defecto) -->
+          <svg id="btn-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+          </svg>
+          <svg id="btn-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+          </svg>
+        </button>
+
+        <!-- Mensaje de éxito -->
+        <div id="form-success"
+             class="hidden flex items-center gap-3 p-4 rounded-xl
+                    bg-green-500/15 border border-green-500/30 text-green-400">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <p class="text-sm font-semibold">{c.successMessage}</p>
+        </div>
+
+        <!-- Mensaje de error de red -->
+        <div id="form-network-error"
+             class="hidden flex items-center gap-3 p-4 rounded-xl
+                    bg-red-500/15 border border-red-500/30 text-red-400">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <p class="text-sm font-semibold">{c.errorNetwork}</p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  /* ===== Inputs ===== */
+  .form-label {
+    @apply block text-sm font-semibold text-surface/70 mb-1.5;
+  }
+  .form-input {
+    @apply w-full px-4 py-3 rounded-xl text-sm text-surface
+           bg-white/5 border border-surface/15
+           placeholder:text-surface/30
+           focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20
+           transition-all duration-200;
+  }
+  select.form-input option {
+    background-color: #1a1f2e;
+    color: #e2e8f0;
+  }
+  .form-error {
+    @apply text-xs text-red-400 mt-1;
+  }
+  .form-field.invalid .form-input {
+    @apply border-red-500/60;
+  }
+  .form-field.invalid .form-error {
+    @apply block;
+  }
+
+  /* ===== SVG Animations ===== */
+  @keyframes dash-move {
+    to { stroke-dashoffset: -20; }
+  }
+  @keyframes pulse-ring {
+    0%, 100% { r: 22; opacity: 0.4; }
+    50%       { r: 28; opacity: 0; }
+  }
+  @keyframes node-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+  }
+  .anim-dash     { animation: dash-move 2s linear infinite; }
+  .anim-pulse-ring { animation: pulse-ring 2.5s ease-in-out infinite; }
+  .anim-node     { animation: node-pulse 2s ease-in-out infinite; }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text') as HTMLElement;
+  const btnSpinner = document.getElementById('btn-spinner') as HTMLElement;
+  const btnIcon = document.getElementById('btn-icon') as HTMLElement;
+  const successMsg = document.getElementById('form-success') as HTMLElement;
+  const networkErr = document.getElementById('form-network-error') as HTMLElement;
+
+  // ---- Validación en tiempo real ----
+  const requiredFields = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]');
+  requiredFields.forEach((field) => {
+    field.addEventListener('blur', () => validateField(field));
+    field.addEventListener('input', () => {
+      if (field.closest('.form-field')?.classList.contains('invalid')) {
+        validateField(field);
+      }
+    });
+  });
+
+  function validateField(field: HTMLInputElement | HTMLTextAreaElement): boolean {
+    const parent = field.closest('.form-field');
+    if (!parent) return true;
+    let valid = true;
+    if (!field.value.trim()) {
+      valid = false;
+    } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim())) {
+      valid = false;
+    }
+    parent.classList.toggle('invalid', !valid);
+    return valid;
+  }
+
+  function validateAll(): boolean {
+    let allValid = true;
+    requiredFields.forEach((field) => {
+      if (!validateField(field)) allValid = false;
+    });
+    return allValid;
+  }
+
+  // ---- Submit con Formspree ----
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    successMsg.classList.add('hidden');
+    networkErr.classList.add('hidden');
+
+    if (!validateAll()) return;
+
+    // Estado: enviando
+    submitBtn.disabled = true;
+    btnText.textContent = 'Enviando...';
+    btnSpinner.classList.remove('hidden');
+    btnIcon.classList.add('hidden');
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('https://formspree.io/f/xpqykkqv', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        form.reset();
+        successMsg.classList.remove('hidden');
+        successMsg.classList.add('flex');
+        // Scroll al mensaje
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        networkErr.classList.remove('hidden');
+        networkErr.classList.add('flex');
+      }
+    } catch {
+      networkErr.classList.remove('hidden');
+      networkErr.classList.add('flex');
+    } finally {
+      submitBtn.disabled = false;
+      btnText.textContent = form.querySelector('#btn-text')?.textContent || 'Enviar mensaje';
+      btnSpinner.classList.add('hidden');
+      btnIcon.classList.remove('hidden');
+    }
+  });
+</script>
