@@ -57,104 +57,101 @@ export const translations = {
       ctaBannerSub: "Hablemos de tu proyecto y encontramos la solución ideal juntos.",
       ctaBannerBtn: "Contáctanos",
       items: [
-        {
-          title: "Software a Medida",
-          description:
-            "Desarrollamos aplicaciones personalizadas adaptadas a los procesos únicos de tu empresa, desde el diseño hasta el despliegue en producción.",
-          color: "#5B4DFF",
-        },
-        {
-          title: "Desarrollo Web",
-          description:
-            "Sitios y plataformas web modernas, rápidas y optimizadas para conversión, construidas con las tecnologías más sólidas del mercado.",
-          color: "#2F80ED",
-        },
-        {
-          title: "Apps Móviles",
-          description:
-            "Aplicaciones iOS y Android nativas o multiplataforma con React Native, centradas en la experiencia del usuario y el rendimiento.",
-          color: "#2DD4BF",
-        },
-        {
-          title: "Consultoría Tech",
-          description:
-            "Asesoría estratégica para definir arquitectura, stack tecnológico y hoja de ruta, tomando decisiones informadas desde el inicio.",
-          color: "#FF9F43",
-        },
-        {
-          title: "Automatización de Procesos",
-          description:
-            "Integración de sistemas, APIs y flujos automáticos que eliminan trabajo manual y reducen errores operativos en tu empresa.",
-          color: "#2DD4BF",
-        },
+        { title: "Software a Medida", description: "Desarrollamos aplicaciones personalizadas adaptadas a los procesos únicos de tu empresa, desde el diseño hasta el despliegue en producción.", color: "#5B4DFF" },
+        { title: "Desarrollo Web", description: "Sitios y plataformas web modernas, rápidas y optimizadas para conversión, construidas con las tecnologías más sólidas del mercado.", color: "#2F80ED" },
+        { title: "Apps Móviles", description: "Aplicaciones iOS y Android nativas o multiplataforma con React Native, centradas en la experiencia del usuario y el rendimiento.", color: "#2DD4BF" },
+        { title: "Consultoría Tech", description: "Asesoría estratégica para definir arquitectura, stack tecnológico y hoja de ruta, tomando decisiones informadas desde el inicio.", color: "#FF9F43" },
+        { title: "Automatización de Procesos", description: "Integración de sistemas, APIs y flujos automáticos que eliminan trabajo manual y reducen errores operativos en tu empresa.", color: "#2DD4BF" },
       ],
     },
     process: {
       badge: "Cómo trabajamos",
       title: "Un proceso claro, resultados predecibles",
-      subtitle:
-        "Cada proyecto sigue una metodología probada que garantiza transparencia, calidad y entregas a tiempo.",
+      subtitle: "Cada proyecto sigue una metodología probada que garantiza transparencia, calidad y entregas a tiempo.",
       steps: [
+        { number: "01", title: "Descubrimiento", description: "Entendemos tu negocio, objetivos y necesidades en una sesión estratégica inicial sin costo." },
+        { number: "02", title: "Diagnóstico", description: "Analizamos tu infraestructura actual, procesos internos y oportunidades de mejora tecnológica." },
+        { number: "03", title: "Propuesta", description: "Diseñamos la arquitectura, estimamos tiempos y costos, y presentamos una propuesta detallada y transparente." },
+        { number: "04", title: "Planificación", description: "Definimos el roadmap del proyecto, asignamos el equipo ideal y establecemos los hitos de entrega por sprint." },
+        { number: "05", title: "Diseño & Prototipo", description: "Creamos wireframes y prototipos interactivos para validar la experiencia de usuario antes de escribir una línea de código." },
+        { number: "06", title: "Desarrollo", description: "Construimos en sprints semanales con entregas continuas, demos en vivo y ciclos de retroalimentación constantes." },
+        { number: "07", title: "Control de Calidad", description: "Ejecutamos pruebas automatizadas, pruebas de rendimiento y revisión de seguridad antes de cada entrega." },
+        { number: "08", title: "Lanzamiento", description: "Desplegamos en producción con monitoreo en tiempo real, asegurando una transición sin interrupciones." },
+        { number: "09", title: "Soporte & Evolución", description: "Acompañamos el crecimiento del producto con soporte post-lanzamiento, mejoras continuas y escalamiento." },
+      ],
+    },
+    projects: {
+      badge: "Portafolio",
+      title: "Proyectos que hablan por sí solos",
+      subtitle: "Cada proyecto es una historia de transformación digital. Aquí algunos de los que nos enorgullece haber construido.",
+      filters: {
+        all: "Todos",
+        web: "Web",
+        mobile: "Móvil",
+        software: "Software",
+        automation: "Automatización",
+      },
+      viewProject: "Ver proyecto",
+      items: [
         {
-          number: "01",
-          title: "Descubrimiento",
-          description:
-            "Entendemos tu negocio, objetivos y necesidades en una sesión estratégica inicial sin costo.",
+          name: "NovaPay",
+          industry: "Fintech",
+          category: "software",
+          description: "Plataforma de pagos digitales con procesamiento en tiempo real, conciliación automática y panel de analytics para empresas financieras.",
+          tags: ["React", "Node.js", "PostgreSQL"],
+          color: "#5B4DFF",
+          gradient: "from-[#5B4DFF] to-[#2F80ED]",
         },
         {
-          number: "02",
-          title: "Diagnóstico",
-          description:
-            "Analizamos tu infraestructura actual, procesos internos y oportunidades de mejora tecnológica.",
+          name: "MediTrack",
+          industry: "Salud",
+          category: "mobile",
+          description: "App móvil para seguimiento de pacientes, gestión de citas médicas y comunicación segura entre médicos y pacientes.",
+          tags: ["React Native", "Firebase"],
+          color: "#2DD4BF",
+          gradient: "from-[#2F80ED] to-[#2DD4BF]",
         },
         {
-          number: "03",
-          title: "Propuesta",
-          description:
-            "Diseñamos la arquitectura, estimamos tiempos y costos, y presentamos una propuesta detallada y transparente.",
+          name: "LogiFlow",
+          industry: "Logística",
+          category: "automation",
+          description: "Sistema de automatización de rutas, trazabilidad de envíos en tiempo real e integración con ERPs para operadores logísticos.",
+          tags: ["Python", "FastAPI", "AWS"],
+          color: "#FF9F43",
+          gradient: "from-[#FF9F43] to-[#FF6B6B]",
         },
         {
-          number: "04",
-          title: "Planificación",
-          description:
-            "Definimos el roadmap del proyecto, asignamos el equipo ideal y establecemos los hitos de entrega por sprint.",
+          name: "EduSphere",
+          industry: "Educación",
+          category: "web",
+          description: "Plataforma LMS con cursos interactivos, evaluaciones adaptativas y dashboard de progreso para instituciones educativas.",
+          tags: ["Next.js", "Tailwind", "Prisma"],
+          color: "#2F80ED",
+          gradient: "from-[#2F80ED] to-[#5B4DFF]",
         },
         {
-          number: "05",
-          title: "Diseño & Prototipo",
-          description:
-            "Creamos wireframes y prototipos interactivos para validar la experiencia de usuario antes de escribir una línea de código.",
+          name: "RetailMax",
+          industry: "Retail",
+          category: "web",
+          description: "E-commerce de alto rendimiento con gestión de inventario, pasarela de pagos integrada y CMS headless para catálogos dinámicos.",
+          tags: ["Astro", "Stripe", "Sanity"],
+          color: "#2DD4BF",
+          gradient: "from-[#2DD4BF] to-[#2F80ED]",
         },
         {
-          number: "06",
-          title: "Desarrollo",
-          description:
-            "Construimos en sprints semanales con entregas continuas, demos en vivo y ciclos de retroalimentación constantes.",
-        },
-        {
-          number: "07",
-          title: "Control de Calidad",
-          description:
-            "Ejecutamos pruebas automatizadas, pruebas de rendimiento y revisión de seguridad antes de cada entrega.",
-        },
-        {
-          number: "08",
-          title: "Lanzamiento",
-          description:
-            "Desplegamos en producción con monitoreo en tiempo real, asegurando una transición sin interrupciones.",
-        },
-        {
-          number: "09",
-          title: "Soporte & Evolución",
-          description:
-            "Acompañamos el crecimiento del producto con soporte post-lanzamiento, mejoras continuas y escalamiento.",
+          name: "AgriSense",
+          industry: "Agro",
+          category: "software",
+          description: "Dashboard IoT para monitoreo de cultivos con sensores en campo, alertas inteligentes y predicciones de cosecha basadas en datos.",
+          tags: ["Vue", "Node.js", "MQTT"],
+          color: "#22C55E",
+          gradient: "from-[#22C55E] to-[#2DD4BF]",
         },
       ],
     },
     contact: {
       title: "¿Tienes un proyecto en mente?",
-      subtitle:
-        "Estamos listos para ayudarte a convertir tu idea en una solución tecnológica.",
+      subtitle: "Estamos listos para ayudarte a convertir tu idea en una solución tecnológica.",
       name: "Nombre",
       company: "Empresa",
       email: "Correo electrónico",
@@ -197,11 +194,9 @@ export const translations = {
         "100% Latin American team",
       ],
       missionTitle: "Our Mission",
-      mission:
-        "To drive the digital transformation of businesses through innovative, efficient technology solutions adapted to the needs of today's market.",
+      mission: "To drive the digital transformation of businesses through innovative, efficient technology solutions adapted to the needs of today's market.",
       visionTitle: "Our Vision",
-      vision:
-        "To be a leading software development company in Latin America, recognized for the quality of our solutions and the technological impact we generate for our clients.",
+      vision: "To be a leading software development company in Latin America, recognized for the quality of our solutions and the technological impact we generate for our clients.",
       stats: [
         { value: "10+", label: "Projects delivered" },
         { value: "5+", label: "Years of experience" },
@@ -212,104 +207,101 @@ export const translations = {
     services: {
       badge: "Our Services",
       title: "What we build for you",
-      subtitle:
-        "End-to-end solutions from strategy to launch, tailored to the real needs of your business.",
+      subtitle: "End-to-end solutions from strategy to launch, tailored to the real needs of your business.",
       cta: "View all services",
       ctaBanner: "Can't find what you're looking for?",
       ctaBannerSub: "Let's talk about your project and find the ideal solution together.",
       ctaBannerBtn: "Contact us",
       items: [
-        {
-          title: "Custom Software",
-          description:
-            "We develop personalized applications adapted to your company's unique processes, from design to production deployment.",
-          color: "#5B4DFF",
-        },
-        {
-          title: "Web Development",
-          description:
-            "Modern, fast and conversion-optimized websites and web platforms, built with the most solid technologies on the market.",
-          color: "#2F80ED",
-        },
-        {
-          title: "Mobile Apps",
-          description:
-            "Native or cross-platform iOS and Android applications with React Native, focused on user experience and performance.",
-          color: "#2DD4BF",
-        },
-        {
-          title: "Tech Consulting",
-          description:
-            "Strategic advice to define architecture, technology stack and roadmap, making informed decisions from the start.",
-          color: "#FF9F43",
-        },
-        {
-          title: "Process Automation",
-          description:
-            "System integrations, APIs and automated workflows that eliminate manual work and reduce operational errors in your company.",
-          color: "#2DD4BF",
-        },
+        { title: "Custom Software", description: "We develop personalized applications adapted to your company's unique processes, from design to production deployment.", color: "#5B4DFF" },
+        { title: "Web Development", description: "Modern, fast and conversion-optimized websites and web platforms, built with the most solid technologies on the market.", color: "#2F80ED" },
+        { title: "Mobile Apps", description: "Native or cross-platform iOS and Android applications with React Native, focused on user experience and performance.", color: "#2DD4BF" },
+        { title: "Tech Consulting", description: "Strategic advice to define architecture, technology stack and roadmap, making informed decisions from the start.", color: "#FF9F43" },
+        { title: "Process Automation", description: "System integrations, APIs and automated workflows that eliminate manual work and reduce operational errors in your company.", color: "#2DD4BF" },
       ],
     },
     process: {
       badge: "How we work",
       title: "A clear process, predictable results",
-      subtitle:
-        "Every project follows a proven methodology that guarantees transparency, quality and on-time delivery.",
+      subtitle: "Every project follows a proven methodology that guarantees transparency, quality and on-time delivery.",
       steps: [
+        { number: "01", title: "Discovery", description: "We understand your business, goals and needs in a free initial strategic session." },
+        { number: "02", title: "Diagnosis", description: "We analyze your current infrastructure, internal processes and opportunities for technological improvement." },
+        { number: "03", title: "Proposal", description: "We design the architecture, estimate timelines and costs, and present a detailed, transparent proposal." },
+        { number: "04", title: "Planning", description: "We define the project roadmap, assign the ideal team and establish sprint delivery milestones." },
+        { number: "05", title: "Design & Prototype", description: "We create wireframes and interactive prototypes to validate the user experience before writing a single line of code." },
+        { number: "06", title: "Development", description: "We build in weekly sprints with continuous deliveries, live demos and constant feedback cycles." },
+        { number: "07", title: "Quality Assurance", description: "We run automated tests, performance testing and security review before each delivery." },
+        { number: "08", title: "Launch", description: "We deploy to production with real-time monitoring, ensuring a seamless transition." },
+        { number: "09", title: "Support & Evolution", description: "We accompany product growth with post-launch support, continuous improvements and scaling." },
+      ],
+    },
+    projects: {
+      badge: "Portfolio",
+      title: "Projects that speak for themselves",
+      subtitle: "Each project is a story of digital transformation. Here are some of the ones we are proud to have built.",
+      filters: {
+        all: "All",
+        web: "Web",
+        mobile: "Mobile",
+        software: "Software",
+        automation: "Automation",
+      },
+      viewProject: "View project",
+      items: [
         {
-          number: "01",
-          title: "Discovery",
-          description:
-            "We understand your business, goals and needs in a free initial strategic session.",
+          name: "NovaPay",
+          industry: "Fintech",
+          category: "software",
+          description: "Digital payments platform with real-time processing, automatic reconciliation and analytics dashboard for financial companies.",
+          tags: ["React", "Node.js", "PostgreSQL"],
+          color: "#5B4DFF",
+          gradient: "from-[#5B4DFF] to-[#2F80ED]",
         },
         {
-          number: "02",
-          title: "Diagnosis",
-          description:
-            "We analyze your current infrastructure, internal processes and opportunities for technological improvement.",
+          name: "MediTrack",
+          industry: "Healthcare",
+          category: "mobile",
+          description: "Mobile app for patient tracking, medical appointment management and secure communication between doctors and patients.",
+          tags: ["React Native", "Firebase"],
+          color: "#2DD4BF",
+          gradient: "from-[#2F80ED] to-[#2DD4BF]",
         },
         {
-          number: "03",
-          title: "Proposal",
-          description:
-            "We design the architecture, estimate timelines and costs, and present a detailed, transparent proposal.",
+          name: "LogiFlow",
+          industry: "Logistics",
+          category: "automation",
+          description: "Route automation system, real-time shipment tracking and ERP integration for logistics operators.",
+          tags: ["Python", "FastAPI", "AWS"],
+          color: "#FF9F43",
+          gradient: "from-[#FF9F43] to-[#FF6B6B]",
         },
         {
-          number: "04",
-          title: "Planning",
-          description:
-            "We define the project roadmap, assign the ideal team and establish sprint delivery milestones.",
+          name: "EduSphere",
+          industry: "Education",
+          category: "web",
+          description: "LMS platform with interactive courses, adaptive assessments and progress dashboard for educational institutions.",
+          tags: ["Next.js", "Tailwind", "Prisma"],
+          color: "#2F80ED",
+          gradient: "from-[#2F80ED] to-[#5B4DFF]",
         },
         {
-          number: "05",
-          title: "Design & Prototype",
-          description:
-            "We create wireframes and interactive prototypes to validate the user experience before writing a single line of code.",
+          name: "RetailMax",
+          industry: "Retail",
+          category: "web",
+          description: "High-performance e-commerce with inventory management, integrated payment gateway and headless CMS for dynamic catalogs.",
+          tags: ["Astro", "Stripe", "Sanity"],
+          color: "#2DD4BF",
+          gradient: "from-[#2DD4BF] to-[#2F80ED]",
         },
         {
-          number: "06",
-          title: "Development",
-          description:
-            "We build in weekly sprints with continuous deliveries, live demos and constant feedback cycles.",
-        },
-        {
-          number: "07",
-          title: "Quality Assurance",
-          description:
-            "We run automated tests, performance testing and security review before each delivery.",
-        },
-        {
-          number: "08",
-          title: "Launch",
-          description:
-            "We deploy to production with real-time monitoring, ensuring a seamless transition.",
-        },
-        {
-          number: "09",
-          title: "Support & Evolution",
-          description:
-            "We accompany product growth with post-launch support, continuous improvements and scaling.",
+          name: "AgriSense",
+          industry: "Agro",
+          category: "software",
+          description: "IoT dashboard for crop monitoring with field sensors, smart alerts and data-based harvest predictions.",
+          tags: ["Vue", "Node.js", "MQTT"],
+          color: "#22C55E",
+          gradient: "from-[#22C55E] to-[#2DD4BF]",
         },
       ],
     },
