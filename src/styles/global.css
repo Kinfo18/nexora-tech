@@ -1,0 +1,15 @@
+/* scr/styñes/global.css */
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #5B4DFF;
+    --color-secondary : #2F80ED;
+    --color-accent : #2DD4BF;
+    --color-highlight : #FF9F43;
+    --color-dark : #1F2937;
+    --color-surface : #F5F7FA;
+    --color-deep : #0D0F1A;
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
