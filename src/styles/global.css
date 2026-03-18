@@ -1,34 +1,37 @@
 /* src/styles/global.css */
 @import "tailwindcss";
 
+/* Activa el dark mode basado en la clase .dark en <html> */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* === COLORES NEXORA TECHNOLOGIES === */
-  --color-primary:   #5B4DFF;  /* Violeta tecnológico - color principal */
-  --color-secondary: #2F80ED;  /* Azul moderno - acciones secundarias */
-  --color-accent:    #2DD4BF;  /* Turquesa - highlights e íconos */
-  --color-highlight: #FF9F43;  /* Naranja - micro-acentos (uso mínimo) */
-  --color-dark:      #1F2937;  /* Gris oscuro - texto cuerpo */
-  --color-surface:   #F5F7FA;  /* Gris claro - fondos alternos */
-  --color-deep:      #0D0F1A;  /* Negro profundo - fondo Hero dark mode */
+  --color-primary:   #5B4DFF;
+  --color-secondary: #2F80ED;
+  --color-accent:    #2DD4BF;
+  --color-highlight: #FF9F43;
+  --color-dark:      #1F2937;
+  --color-surface:   #F5F7FA;
+  --color-deep:      #0D0F1A;
 
-  /* === TIPOGRAFÍA CORPORATIVA === */
+  /* === TIPOGRAFÍA === */
   --font-heading: 'Poppins', sans-serif;
   --font-body:    'Inter', sans-serif;
 }
 
-/* === ESTILOS BASE === */
+/* === ESTILOS BASE GLOBALES === */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: white;
+  background-color: #ffffff;
   color: #1F2937;
+  /* Transición suave al cambiar de tema */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark mode base */
 html.dark body {
   background-color: #0D0F1A;
   color: #F5F7FA;

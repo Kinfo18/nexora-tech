@@ -1,5 +1,9 @@
 ---
 // src/layouts/BaseLayout.astro
+import Header from "../components/global/Header.astro";
+import Footer from "../components/global/Footer.astro";
+import "../styles/global.css";
+
 interface Props {
   title?: string;
   description?: string;
@@ -18,14 +22,11 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-
-    <!-- SEO Básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
 
-    <!-- Google Fonts: Poppins + Inter -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,27 +34,19 @@ const {
       rel="stylesheet"
     />
 
-    <!-- Importar estilos globales -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
-
-    <!-- 
-      Script anti-FOUC (Flash of Unstyled Content)
-      DEBE ejecutarse ANTES de que el navegador pinte la página.
-      is:inline = no espera hidratación, corre inmediatamente.
-    -->
+    <!-- Script anti-FOUC: corre ANTES de pintar la página -->
     <script is:inline>
-      // Light mode es el defecto. Solo activamos dark si el usuario lo eligió.
       if (localStorage.getItem("theme") === "dark") {
         document.documentElement.classList.add("dark");
       }
     </script>
   </head>
 
-  <body>
-    <!-- 
-      <slot /> es el "hueco" donde Astro inyecta
-      el contenido de cada página que use este layout.
-    -->
-    <slot />
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

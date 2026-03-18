@@ -1,0 +1,105 @@
+---
+// src/components/global/LangDropdown.astro
+// Dropdown para cambiar entre español e inglés
+// Detecta el idioma actual por la URL (/en/ = inglés, cualquier otra = español)
+
+const currentPath = Astro.url.pathname;
+// Si la URL empieza con /en/, estamos en inglés
+const isEnglish = currentPath.startsWith("/en");
+const currentLang = isEnglish ? "EN" : "ES";
+
+// Al cambiar de idioma, redirigimos a la versión equivalente de la página
+const switchTo = isEnglish
+  ? currentPath.replace("/en", "") || "/" // EN → ES: quitamos /en
+  : `/en${currentPath}`; // ES → EN: agregamos /en
+---
+
+<div class="relative" id="lang-dropdown-wrapper">
+  <!-- Botón que abre el dropdown -->
+  <button
+    id="lang-toggle"
+    aria-haspopup="true"
+    aria-expanded="false"
+    class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold
+           text-dark dark:text-surface
+           hover:bg-surface dark:hover:bg-deep/50
+           transition-colors duration-200
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+  >
+    <span class="text-base leading-none">🌐</span>
+    <span>{currentLang}</span>
+    <!-- Flecha -->
+    <svg
+      id="lang-arrow"
+      class="h-3 w-3 transition-transform duration-200"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2.5"
+        d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <!-- Panel desplegable -->
+  <div
+    id="lang-menu"
+    role="menu"
+    class="absolute right-0 top-full mt-2 w-28 hidden
+           rounded-xl border border-dark/10 dark:border-surface/10
+           bg-white dark:bg-deep
+           shadow-lg shadow-dark/10
+           py-1 z-50"
+  >
+    <a
+      href="/"
+      role="menuitem"
+      class={`flex items-center gap-2 px-4 py-2.5 text-sm transition-colors
+              ${
+                !isEnglish
+                  ? "text-primary font-semibold bg-primary/5"
+                  : "text-dark dark:text-surface hover:bg-surface dark:hover:bg-surface/5"
+              }`}
+    >
+      <span>🇨🇴</span> Español
+    </a>
+    <a
+      href="/en/"
+      role="menuitem"
+      class={`flex items-center gap-2 px-4 py-2.5 text-sm transition-colors
+              ${
+                isEnglish
+                  ? "text-primary font-semibold bg-primary/5"
+                  : "text-dark dark:text-surface hover:bg-surface dark:hover:bg-surface/5"
+              }`}
+    >
+      <span>🇺🇸</span> English
+    </a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById("lang-toggle");
+  const menu = document.getElementById("lang-menu");
+  const arrow = document.getElementById("lang-arrow");
+
+  btn?.addEventListener("click", () => {
+    const isOpen = !menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden");
+    arrow?.classList.toggle("rotate-180");
+    btn.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  // Cerrar al hacer clic fuera del dropdown
+  document.addEventListener("click", (e) => {
+    const wrapper = document.getElementById("lang-dropdown-wrapper");
+    if (!wrapper?.contains(e.target as Node)) {
+      menu?.classList.add("hidden");
+      arrow?.classList.remove("rotate-180");
+      btn?.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>

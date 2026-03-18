@@ -1,0 +1,245 @@
+---
+// src/components/global/Header.astro
+import Button from "../ui/Button.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import LangDropdown from "./LangDropdown.astro";
+import { translations } from "../../i18n/translations";
+
+// Detectamos el idioma actual por la URL
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "es";
+const t = translations[lang]; // t = objeto de traducciones del idioma activo
+
+// Links de navegación — las rutas se prefijan con /en/ si estamos en inglés
+const prefix = lang === "en" ? "/en" : "";
+const navLinks = [
+  { name: t.nav.home, href: `${prefix}/` },
+  { name: t.nav.services, href: `${prefix}/#servicios` },
+  { name: t.nav.process, href: `${prefix}/#proceso` },
+  { name: t.nav.projects, href: `${prefix}/#proyectos` },
+  { name: t.nav.technologies, href: `${prefix}/#tecnologias` },
+  { name: t.nav.contact, href: `${prefix}/#contacto` },
+];
+---
+
+<!-- 
+  El header comienza TRANSPARENTE (cuando el usuario está al tope de la página).
+  La clase .scrolled se agrega/quita via JavaScript al hacer scroll.
+-->
+<header
+  id="main-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <nav class="container mx-auto flex items-center justify-between px-6 py-4">
+    <!-- ===== LOGO ===== -->
+    <a
+      href={`${prefix}/`}
+      class="flex items-center gap-3 shrink-0"
+      aria-label="Nexora Technologies - Inicio"
+    >
+      <!-- Logo horizontal: visible en tablets y desktop -->
+      <img
+        src="/images/logo-horizontal.png"
+        alt="Nexora Technologies"
+        class="hidden sm:block h-9 w-auto"
+      />
+      <!-- Ícono simplificado: visible solo en móvil -->
+      <img
+        src="/images/logo-icon.png"
+        alt="Nexora Technologies"
+        class="block sm:hidden h-9 w-auto"
+      />
+    </a>
+
+    <!-- ===== NAV LINKS — Solo visible en desktop ===== -->
+    <ul class="hidden lg:flex items-center gap-1">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="px-3 py-2 text-sm font-medium rounded-lg
+                   text-dark/80 dark:text-surface/80
+                   hover:text-primary dark:hover:text-primary
+                   hover:bg-primary/5 dark:hover:bg-primary/10
+                   transition-colors duration-200"
+            >
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- ===== CONTROLES DERECHA ===== -->
+    <div class="flex items-center gap-3">
+      <!-- Selector de idioma -->
+      <LangDropdown />
+
+      <!-- Toggle Dark/Light -->
+      <ThemeToggle />
+
+      <!-- CTA — Oculto en móvil para no saturar -->
+      <div class="hidden sm:block">
+        <Button href="/contacto">
+          {t.nav.cta}
+        </Button>
+      </div>
+
+      <!-- Botón hamburguesa — Solo visible en móvil/tablet -->
+      <button
+        id="mobile-menu-btn"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        class="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5
+               rounded-lg hover:bg-surface dark:hover:bg-surface/10
+               transition-colors duration-200
+               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      >
+        <span
+          class="hamburger-line block w-5 h-0.5 bg-dark dark:bg-surface rounded-full transition-all duration-300"
+        ></span>
+        <span
+          class="hamburger-line block w-5 h-0.5 bg-dark dark:bg-surface rounded-full transition-all duration-300"
+        ></span>
+        <span
+          class="hamburger-line block w-5 h-0.5 bg-dark dark:bg-surface rounded-full transition-all duration-300"
+        ></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== MENÚ MÓVIL (Slide desde la derecha) ===== -->
+<!-- Overlay oscuro de fondo -->
+<div
+  id="mobile-overlay"
+  class="fixed inset-0 bg-dark/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+>
+</div>
+
+<!-- Panel lateral -->
+<div
+  id="mobile-menu"
+  class="fixed top-0 right-0 h-full w-72 z-50
+         bg-white dark:bg-deep
+         border-l border-dark/10 dark:border-surface/10
+         shadow-2xl
+         translate-x-full transition-transform duration-300 ease-in-out
+         lg:hidden"
+>
+  <!-- Cabecera del panel móvil -->
+  <div
+    class="flex items-center justify-between px-6 py-5 border-b border-dark/10 dark:border-surface/10"
+  >
+    <img src="/images/logo-icon.png" alt="Nexora" class="h-8 w-auto" />
+    <button
+      id="mobile-menu-close"
+      aria-label="Cerrar menú"
+      class="w-8 h-8 flex items-center justify-center rounded-lg
+             hover:bg-surface dark:hover:bg-surface/10 transition-colors"
+    >
+      <!-- Ícono X -->
+      <svg
+        class="w-5 h-5 text-dark dark:text-surface"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Links de navegación móvil -->
+  <nav class="flex flex-col px-4 py-6 gap-1">
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium
+               text-dark dark:text-surface
+               hover:text-primary dark:hover:text-primary
+               hover:bg-primary/5 dark:hover:bg-primary/10
+               transition-colors duration-200"
+        >
+          {link.name}
+        </a>
+      ))
+    }
+  </nav>
+
+  <!-- Footer del panel móvil -->
+  <div
+    class="absolute bottom-0 left-0 right-0 px-6 pb-8 pt-4 border-t border-dark/10 dark:border-surface/10"
+  >
+    <Button href="/contacto" class="w-full justify-center">
+      {t.nav.cta}
+    </Button>
+  </div>
+</div>
+
+<script>
+  // ===== GLASSMORPHISM AL SCROLL =====
+  const header = document.getElementById("main-header");
+
+  const updateHeader = () => {
+    if (window.scrollY > 20) {
+      // Scrolled: fondo glassmorphism
+      header?.classList.add(
+        "bg-white/80",
+        "dark:bg-deep/80",
+        "backdrop-blur-md",
+        "border-b",
+        "border-dark/10",
+        "dark:border-surface/10",
+        "shadow-sm",
+      );
+    } else {
+      // Al tope: completamente transparente
+      header?.classList.remove(
+        "bg-white/80",
+        "dark:bg-deep/80",
+        "backdrop-blur-md",
+        "border-b",
+        "border-dark/10",
+        "dark:border-surface/10",
+        "shadow-sm",
+      );
+    }
+  };
+
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader(); // Ejecutar al cargar por si la página no empieza al tope
+
+  // ===== MENÚ MÓVIL =====
+  const mobileBtn = document.getElementById("mobile-menu-btn");
+  const mobileClose = document.getElementById("mobile-menu-close");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const overlay = document.getElementById("mobile-overlay");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+  const openMenu = () => {
+    mobileMenu?.classList.remove("translate-x-full");
+    overlay?.classList.remove("opacity-0", "pointer-events-none");
+    mobileBtn?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden"; // Bloquea scroll del fondo
+  };
+
+  const closeMenu = () => {
+    mobileMenu?.classList.add("translate-x-full");
+    overlay?.classList.add("opacity-0", "pointer-events-none");
+    mobileBtn?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
+
+  mobileBtn?.addEventListener("click", openMenu);
+  mobileClose?.addEventListener("click", closeMenu);
+  overlay?.addEventListener("click", closeMenu);
+  // Cerrar al hacer clic en cualquier link del menú móvil
+  mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
+</script>
