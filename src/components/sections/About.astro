@@ -1,189 +1,81 @@
 ---
-// src/components/sections/About.astro
 import { translations } from "../../i18n/translations";
-
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 const t = translations[lang];
 const a = t.about;
-
-// Íconos SVG inline para misión y visión
-const missionIcon = `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`;
-const visionIcon  = `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`;
 ---
 
-<section
-  id="nosotros"
-  class="relative py-24 lg:py-32 about-bg overflow-hidden"
->
+<section id="nosotros" class="py-24 bg-white dark:bg-[#0D0F1A] overflow-hidden">
+  <div class="container mx-auto px-6">
 
-  <!-- Patrón de puntos decorativo de fondo -->
-  <div class="absolute inset-0 dot-pattern opacity-40 dark:opacity-20 pointer-events-none"></div>
+    <!-- Badge + Título -->
+    <div class="reveal reveal-fade-up text-center mb-16">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full
+                   bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-4">
+        {a.badge}
+      </span>
+      <h2 class="text-4xl lg:text-5xl font-extrabold text-dark dark:text-surface leading-tight tracking-tight mb-4">
+        {a.title}
+      </h2>
+      <p class="text-lg text-dark/60 dark:text-surface/60 max-w-2xl mx-auto">{a.description}</p>
+    </div>
 
-  <div class="relative container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-    <!-- ===== BLOQUE PRINCIPAL: 2 COLUMNAS ===== -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
-
-      <!-- COLUMNA IZQUIERDA: Texto + diferenciadores -->
-      <div class="flex flex-col space-y-8">
-
-        <!-- Badge de sección -->
-        <span class="inline-flex items-center gap-2 px-4 py-2 self-start rounded-full
-                     bg-secondary/10 dark:bg-secondary/15
-                     border border-secondary/20 dark:border-secondary/30
-                     text-secondary text-sm font-semibold">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-          </svg>
-          {a.badge}
-        </span>
-
-        <!-- Título de sección -->
-        <h2 class="text-4xl lg:text-5xl font-extrabold
-                   text-dark dark:text-surface
-                   leading-tight tracking-tight">
-          {a.title}
-        </h2>
-
-        <!-- Párrafo descriptivo -->
-        <p class="text-lg text-dark/65 dark:text-surface/65 leading-relaxed">
-          {a.description}
-        </p>
-
-        <!-- Diferenciadores -->
-        <ul class="flex flex-col gap-3 pt-2">
-          {a.differentiators.map((item) => (
-            <li class="flex items-start gap-3">
-              <!-- Ícono check con color primario -->
-              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center
-                           rounded-full bg-primary/15 dark:bg-primary/20">
+      <!-- Columna izquierda: diferenciadores -->
+      <div class="reveal reveal-fade-left">
+        <ul class="space-y-4 mb-10">
+          {a.differentiators.map((item, i) => (
+            <li class="reveal reveal-fade-left flex items-start gap-3" data-delay={String(i * 100) as any}>
+              <span class="mt-1 w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
                 <svg class="w-3 h-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
                 </svg>
               </span>
-              <span class="text-base text-dark/75 dark:text-surface/75 font-medium">{item}</span>
+              <span class="text-dark/80 dark:text-surface/80 font-medium">{item}</span>
             </li>
           ))}
         </ul>
-
-        <!-- Ubicación + cobertura -->
-        <div class="flex flex-col sm:flex-row gap-4 pt-2">
-          <div class="flex items-center gap-2 text-sm text-dark/50 dark:text-surface/50">
-            <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        <!-- Ubicación -->
+        <div class="flex flex-col gap-2 text-sm text-dark/50 dark:text-surface/50">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
             {a.location}
-          </div>
-          <div class="flex items-center gap-2 text-sm text-dark/50 dark:text-surface/50">
-            <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
             </svg>
             {a.coverage}
-          </div>
+          </span>
         </div>
-
       </div>
 
-      <!-- COLUMNA DERECHA: Tarjetas de stats -->
-      <div class="grid grid-cols-2 gap-5 content-start pt-4 lg:pt-16">
-        {a.stats.map((stat, i) => {
-          // Alternamos colores de acento entre las 4 tarjetas
-          const accents = [
-            { bg: "bg-primary/10 dark:bg-primary/15",     text: "text-primary",     border: "border-primary/20 dark:border-primary/25" },
-            { bg: "bg-secondary/10 dark:bg-secondary/15", text: "text-secondary",   border: "border-secondary/20 dark:border-secondary/25" },
-            { bg: "bg-accent/10 dark:bg-accent/15",       text: "text-accent",      border: "border-accent/20 dark:border-accent/25" },
-            { bg: "bg-highlight/10 dark:bg-highlight/15", text: "text-highlight",   border: "border-highlight/20 dark:border-highlight/25" },
-          ];
-          const ac = accents[i % accents.length];
-          return (
-            <div class={`flex flex-col items-center justify-center text-center
-                         rounded-2xl p-7
-                         bg-white dark:bg-surface/5
-                         border ${ac.border}
-                         shadow-sm hover:shadow-md
-                         transition-shadow duration-300`}>
-              <span class={`text-4xl font-extrabold ${ac.text} mb-2`}>
-                {stat.value}
-              </span>
-              <span class="text-sm font-medium text-dark/60 dark:text-surface/60 leading-snug">
-                {stat.label}
-              </span>
+      <!-- Columna derecha: misión + visión + stats -->
+      <div class="space-y-6">
+        <!-- Misión -->
+        <div class="reveal reveal-fade-right p-6 rounded-2xl bg-primary/5 border border-primary/15">
+          <h3 class="text-sm font-bold text-primary uppercase tracking-wider mb-2">{a.missionTitle}</h3>
+          <p class="text-dark/70 dark:text-surface/70 text-sm leading-relaxed">{a.mission}</p>
+        </div>
+        <!-- Visión -->
+        <div class="reveal reveal-fade-right p-6 rounded-2xl bg-accent/5 border border-accent/15" data-delay="150">
+          <h3 class="text-sm font-bold text-accent uppercase tracking-wider mb-2">{a.visionTitle}</h3>
+          <p class="text-dark/70 dark:text-surface/70 text-sm leading-relaxed">{a.vision}</p>
+        </div>
+        <!-- Stats -->
+        <div class="reveal reveal-fade-right grid grid-cols-2 gap-4" data-delay="300">
+          {a.stats.map((stat) => (
+            <div class="p-5 rounded-2xl bg-surface dark:bg-white/5 border border-dark/8 dark:border-white/10 text-center">
+              <p class="text-3xl font-extrabold text-primary mb-1">{stat.value}</p>
+              <p class="text-xs text-dark/50 dark:text-surface/50 font-medium">{stat.label}</p>
             </div>
-          );
-        })}
-      </div>
-
-    </div>
-
-    <!-- ===== TARJETAS MISIÓN + VISIÓN ===== -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- Misión -->
-      <div class="group relative rounded-2xl overflow-hidden
-                  bg-white dark:bg-surface/5
-                  border border-dark/10 dark:border-surface/10
-                  p-8 shadow-sm hover:shadow-lg
-                  transition-all duration-300">
-        <!-- Acento de color en la esquina superior -->
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary
-                    rounded-t-2xl"></div>
-        <!-- Ícono -->
-        <div class="w-12 h-12 rounded-xl bg-primary/10 dark:bg-primary/15
-                    flex items-center justify-center text-primary mb-5
-                    group-hover:scale-110 transition-transform duration-300">
-          <Fragment set:html={missionIcon} />
+          ))}
         </div>
-        <h3 class="text-xl font-bold text-dark dark:text-surface mb-3">
-          {a.missionTitle}
-        </h3>
-        <p class="text-base text-dark/65 dark:text-surface/65 leading-relaxed">
-          {a.mission}
-        </p>
       </div>
-
-      <!-- Visión -->
-      <div class="group relative rounded-2xl overflow-hidden
-                  bg-white dark:bg-surface/5
-                  border border-dark/10 dark:border-surface/10
-                  p-8 shadow-sm hover:shadow-lg
-                  transition-all duration-300">
-        <!-- Acento de color en la esquina superior -->
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary to-accent
-                    rounded-t-2xl"></div>
-        <!-- Ícono -->
-        <div class="w-12 h-12 rounded-xl bg-secondary/10 dark:bg-secondary/15
-                    flex items-center justify-center text-secondary mb-5
-                    group-hover:scale-110 transition-transform duration-300">
-          <Fragment set:html={visionIcon} />
-        </div>
-        <h3 class="text-xl font-bold text-dark dark:text-surface mb-3">
-          {a.visionTitle}
-        </h3>
-        <p class="text-base text-dark/65 dark:text-surface/65 leading-relaxed">
-          {a.vision}
-        </p>
-      </div>
-
     </div>
-
   </div>
 </section>
-
-<style>
-  /* Fondo sutil de la sección About */
-  .about-bg {
-    background-color: #F5F7FA;
-  }
-  :global(html.dark) .about-bg {
-    background-color: rgba(13, 15, 26, 0.6);
-  }
-
-  /* Patrón de puntos decorativo */
-  .dot-pattern {
-    background-image: radial-gradient(circle, rgba(91,77,255,0.18) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-</style>

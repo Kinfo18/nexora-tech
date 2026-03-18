@@ -1,0 +1,61 @@
+---
+// src/components/ui/ScrollReveal.astro
+// Wrapper que anima sus hijos al entrar en el viewport.
+// Props:
+//   animation : 'fade-up' | 'fade-left' | 'fade-right' | 'fade-in' | 'zoom-in'
+//   delay     : '0' | '100' | '200' | '300' | '400' | '500' (ms, string)
+//   threshold : number 0-1 (qué porcentaje del elemento debe ser visible)
+//   class     : clases extra opcionales
+
+interface Props {
+  animation?: 'fade-up' | 'fade-left' | 'fade-right' | 'fade-in' | 'zoom-in';
+  delay?:     '0' | '100' | '200' | '300' | '400' | '500' | '600';
+  threshold?: number;
+  class?:     string;
+  tag?:       string;
+}
+
+const {
+  animation = 'fade-up',
+  delay     = '0',
+  threshold = 0.15,
+  class: extraClass = '',
+  tag = 'div',
+} = Astro.props;
+
+const Tag = tag as any;
+---
+
+<Tag
+  class={`reveal reveal-${animation} ${extraClass}`}
+  data-delay={delay}
+  data-threshold={threshold}
+>
+  <slot />
+</Tag>
+
+<style>
+  /* Estado INICIAL — invisible, desplazado */
+  .reveal                { transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal-fade-up        { opacity: 0; transform: translateY(32px); }
+  .reveal-fade-left      { opacity: 0; transform: translateX(-32px); }
+  .reveal-fade-right     { opacity: 0; transform: translateX(32px); }
+  .reveal-fade-in        { opacity: 0; transform: none; }
+  .reveal-zoom-in        { opacity: 0; transform: scale(0.92); }
+
+  /* Estado VISIBLE — clase agregada por JS */
+  .reveal.is-visible     { opacity: 1 !important; transform: none !important; }
+
+  /* Delays */
+  .reveal[data-delay='100'] { transition-delay: 100ms; }
+  .reveal[data-delay='200'] { transition-delay: 200ms; }
+  .reveal[data-delay='300'] { transition-delay: 300ms; }
+  .reveal[data-delay='400'] { transition-delay: 400ms; }
+  .reveal[data-delay='500'] { transition-delay: 500ms; }
+  .reveal[data-delay='600'] { transition-delay: 600ms; }
+
+  /* Sin animación para usuarios con prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>

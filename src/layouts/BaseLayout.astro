@@ -5,15 +5,15 @@ import Footer from "../components/global/Footer.astro";
 import "../styles/global.css";
 
 interface Props {
-  title?: string;
+  title?:       string;
   description?: string;
-  lang?: string;
+  lang?:        string;
 }
 
 const {
-  title = "Nexora Technologies — Transformamos ideas en soluciones digitales",
+  title       = "Nexora Technologies — Transformamos ideas en soluciones digitales",
   description = "Desarrollamos software a medida, aplicaciones web y móviles para empresas en crecimiento en Latinoamérica.",
-  lang = "es",
+  lang        = "es",
 } = Astro.props;
 ---
 
@@ -34,10 +34,10 @@ const {
       rel="stylesheet"
     />
 
-    <!-- Script anti-FOUC: corre ANTES de pintar la página -->
+    <!-- Anti-FOUC: aplica tema oscuro antes de pintar -->
     <script is:inline>
-      if (localStorage.getItem("theme") === "dark") {
-        document.documentElement.classList.add("dark");
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
       }
     </script>
   </head>
@@ -48,5 +48,12 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <!-- Scroll Reveal — inicializa el IntersectionObserver global -->
+    <script>
+      import { initScrollReveal } from '../scripts/scrollReveal';
+      initScrollReveal();
+      document.addEventListener('astro:page-load', initScrollReveal);
+    </script>
   </body>
 </html>
