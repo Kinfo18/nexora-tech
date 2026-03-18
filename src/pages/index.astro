@@ -1,7 +1,8 @@
 ---
-// src/pages/index.astro — Página principal en Español
+// src/pages/index.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
 ---
 
 <BaseLayout
@@ -9,11 +10,9 @@ import Hero from "../components/sections/Hero.astro";
   description="Soluciones tecnológicas personalizadas para empresas que buscan escalar, automatizar procesos y mejorar su presencia digital."
   lang="es"
 >
-  <!-- Aquí irán las secciones en las siguientes fases -->
-  <Hero />
   <main>
-    <p class="font-heading text-primary">
-      ¡Nexora Technologies está en construcción! 🚀
-    </p>
+    <Hero />
+    <About />
+    <!-- Las siguientes secciones se agregarán fase por fase -->
   </main>
 </BaseLayout>
